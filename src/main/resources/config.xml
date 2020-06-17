@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/util
+     http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+
+    <bean name="student" class="domain.Student" scope="prototype">
+        <property name="name" value="zhangsan"/>
+        <property name="room" ref="room" />
+    </bean>
+
+    <bean name="room" class="domain.Room">
+        <property name="roomName" value="软件实训"/>
+        <property name="teacher" ref="teacher"/>
+    </bean>
+
+    <bean name="teacher" class="domain.Teacher">
+        <property name="name" value="陈龙"/>
+    </bean>
+
+    <bean name="RoomOne1" class="domain.RoomOne">
+        <property name="className" value="班级1"/>
+        <property name="list" ref="courseLists">
+        </property>
+    </bean>
+    <bean name="RoomOne2" class="domain.RoomOne">
+        <property name="className" value="班级2"/>
+        <property name="list" ref="courseLists">
+        </property>
+    </bean>
+
+    <util:list id="courseLists">
+        <bean class="domain.Course">
+            <property name="cid" value="1"/>
+            <property name="cname" value="高数"/>
+            <property name="teacher">
+                <bean class="domain.Teacher">
+                    <property name="name" value="范博文1"/>
+                </bean>
+            </property>
+        </bean>
+        <bean class="domain.Course">
+            <property name="cid" value="2"/>
+            <property name="cname" value="算法"/>
+            <property name="teacher">
+                <bean class="domain.Teacher">
+                    <property name="name" value="范博文2"/>
+                </bean>
+            </property>
+        </bean>
+        <bean class="domain.Course">
+            <property name="cid" value="3"/>
+            <property name="cname" value="大英"/>
+            <property name="teacher">
+                <bean class="domain.Teacher">
+                    <property name="name" value="范博文3"/>
+                </bean>
+            </property>
+        </bean>
+
+    </util:list>
+</beans>

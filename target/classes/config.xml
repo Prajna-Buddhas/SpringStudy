@@ -60,5 +60,6 @@
                 </bean>
             </property>
         </bean>
+
     </util:list>
 </beans>
